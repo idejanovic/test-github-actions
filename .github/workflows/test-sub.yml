@@ -42,7 +42,7 @@ jobs:
       - name: checking stuff
         run: |
           echo ${{ github.event_name }}
-          echo ${{ github.event_name == "pull_request" }}
+          echo ${{ contains(fromJson('["push", "pull_request"]'), github.event_name) }}
           echo ${{ github.head_ref }}
       - name: sleep
         run: sleep 20
