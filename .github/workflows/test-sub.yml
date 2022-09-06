@@ -26,3 +26,4 @@ jobs:
           echo "my-bool:  '${{ inputs.my-bool }}'"
           echo "my-bool2: '${{ inputs.my-bool2 }}'"
           echo "my-bool3: '${{ inputs.my-bool3 }}'"
+          echo "github.workflow: '${{ github.workflow }}'"
