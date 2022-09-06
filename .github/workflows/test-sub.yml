@@ -11,6 +11,9 @@ on:
       my-bool3:
         type: string
         default: "false"
+  push:
+  pull_request:
+
 jobs:
   run:
     name: "TNT"
