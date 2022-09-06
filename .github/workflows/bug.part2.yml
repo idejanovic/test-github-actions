@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: checking
         run: |
-          echo ${{ contains(fromJson('["pull_request"]'), github.event_name && github.head_ref || "no"}}
-          echo ${{ contains(fromJson('["push"]'), github.event_name) && github.ref_name || "no" }}
+          echo ${{ contains(fromJson('["pull_request"]'), github.event_name && github.head_ref }}
+          echo ${{ contains(fromJson('["push"]'), github.event_name) && github.ref_name }}
           echo ${{ github.head_ref || github.ref }}
 
