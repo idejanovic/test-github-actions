@@ -16,7 +16,7 @@ on:
 
 #  || github.event_name == "push" && github.ref_name || github.head_ref  || github.ref 
 concurrency:
-  group: '${{ github.workflow }} @ ${{ contains(fromJson('["push"]'), github.event_name) && github.head_ref}}'
+  group: '${{ github.workflow }} @ ${{ contains(fromJson('["push"]'), github.event_name) }}'
   cancel-in-progress: true
 
 jobs:
