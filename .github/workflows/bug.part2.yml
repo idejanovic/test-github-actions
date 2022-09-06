@@ -11,5 +11,4 @@ jobs:
         run: |
           echo ${{ contains(fromJson('["pull_request"]'), github.event_name && github.head_ref }}
           echo ${{ contains(fromJson('["push"]'), github.event_name) && github.ref_name }}
-          echo ${{ github.head_ref || github.ref }}
 
