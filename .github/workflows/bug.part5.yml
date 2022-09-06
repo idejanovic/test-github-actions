@@ -3,7 +3,7 @@ name: 'bug5'
 on: [push, pull_request]
 
 concurrency:
-  group: '${{ github.workflow }}'
+  group: '${{ github.workflow }} @ ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref }}'
   cancel-in-progress: true
 
 jobs:

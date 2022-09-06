@@ -9,5 +9,5 @@ jobs:
     steps:
       - name: checking
         run: |
-          echo ${{ github.workflow }} @ ${{ github.event_name == "pull_request" && github.head_ref || github.event_name == "push" && github.ref_name || github.head_ref || github.ref }}
+          echo ${{ github.workflow }} @ ${{ github.event_name == 'pull_request' && github.head_ref || github.event_name == 'push' && github.ref_name || github.head_ref || github.ref }}
 
