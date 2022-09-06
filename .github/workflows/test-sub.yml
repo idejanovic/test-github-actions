@@ -8,6 +8,9 @@ on:
       my-bool2:
         type: string
         default: "true"
+      my-bool3:
+        type: string
+        default: "false"
 jobs:
   run:
     name: "TNT"
