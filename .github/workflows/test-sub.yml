@@ -15,9 +15,9 @@ on:
   pull_request:
 
 
-concurrency:
-  group: '${{ github.workflow }} @ ${{ github.event_name == "pull_request" && github.head_ref || github.event_name == "push" && github.ref_name || github.head_ref || github.ref }}'
-  cancel-in-progress: true
+# concurrency:
+#   group: '${{ github.workflow }} @ ${{ github.event_name == "pull_request" && github.head_ref || github.event_name == "push" && github.ref_name || github.head_ref || github.ref }}'
+#   cancel-in-progress: true
 
 jobs:
   run:
@@ -39,6 +39,12 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: checking stuff
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ github.event_name == "pull_request" }}
+          echo ${{ github.head_ref }}
+          echo ${{ github.event_name == "pull_request" && github.head_ref }}
       - name: sleep
         run: sleep 20
 
