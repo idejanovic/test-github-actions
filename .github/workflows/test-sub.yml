@@ -14,6 +14,11 @@ on:
   push:
   pull_request:
 
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event_name == "pull_request" && github.head_ref || github.event_name == "push" && github.ref_name || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
 jobs:
   run:
     name: "TNT"
@@ -30,3 +35,10 @@ jobs:
           echo "my-bool2: '${{ inputs.my-bool2 }}'"
           echo "my-bool3: '${{ inputs.my-bool3 }}'"
           echo "github.workflow: '${{ github.workflow }}'"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: sleep
+        run: sleep 20
+
