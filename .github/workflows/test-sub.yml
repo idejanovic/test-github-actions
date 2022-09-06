@@ -15,9 +15,9 @@ on:
   pull_request:
 
 #  || github.event_name == "push" && github.ref_name || github.head_ref  || github.ref 
-concurrency:
-  group: '${{ github.workflow }} @ ${{ contains(fromJson('["push"]'), github.event_name) && "y" || "n" }}'
-  cancel-in-progress: true
+# concurrency:
+#   group: '${{ github.workflow }} @ ${{ contains(fromJson('["push"]'), github.event_name) && "y" || "n" }}'
+#   cancel-in-progress: true
 
 jobs:
   run:
@@ -44,6 +44,7 @@ jobs:
           echo ${{ github.event_name }}
           echo ${{ contains(fromJson('["push"]'), github.event_name) }}
           echo ${{ github.head_ref }}
+          echo ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}
       - name: sleep
         run: sleep 20
 
