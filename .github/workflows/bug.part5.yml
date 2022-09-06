@@ -1,0 +1,17 @@
+name: 'bug5'
+
+on: [push, pull_request]
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref }}'
+  cancel-in-progress: true
+
+jobs:
+  run:
+    name: "execute some steps"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking
+        run: |
+          echo "yes"
+

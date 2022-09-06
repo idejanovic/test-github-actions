@@ -11,6 +11,14 @@ on:
       my-bool3:
         type: string
         default: "false"
+  push:
+  pull_request:
+
+#  || github.event_name == "push" && github.ref_name || github.head_ref  || github.ref 
+# concurrency:
+#   group: '${{ github.workflow }} @ ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}'
+#   cancel-in-progress: true
+
 jobs:
   run:
     name: "TNT"
@@ -27,3 +35,16 @@ jobs:
           echo "my-bool2: '${{ inputs.my-bool2 }}'"
           echo "my-bool3: '${{ inputs.my-bool3 }}'"
           echo "github.workflow: '${{ github.workflow }}'"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: checking stuff
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ contains(fromJson('["push"]'), github.event_name) }}
+          echo ${{ github.head_ref }}
+          echo ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}
+      - name: sleep
+        run: sleep 20
+

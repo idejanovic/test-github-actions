@@ -1,0 +1,13 @@
+name: 'bug2'
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    name: "execute some steps"
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking
+        run: |
+          echo ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}
+
