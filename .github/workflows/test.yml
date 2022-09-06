@@ -13,4 +13,3 @@ jobs:
     uses: ./.github/workflows/test-sub.yml
     with:
       my-bool: ${{ github.event.inputs.my-boolean }}
-      my-bool2: ${{ github.event.inputs.my-boolean }}
