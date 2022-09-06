@@ -1,0 +1,15 @@
+name: 'Test input'
+
+on:
+  workflow_call:
+    inputs:
+      my-boolean:
+        default: true
+        type: boolean
+        description: "select or don't!"
+jobs:
+  call:
+    name: "sub"
+    uses: ./github/workflows/test-sub.yml
+    with:
+      my-bool: ${{ github.event.inputs.my-boolean}}

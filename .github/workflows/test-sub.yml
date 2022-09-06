@@ -1,0 +1,14 @@
+name: 'Test Sub'
+
+jobs:
+  run:
+    name: "EKS"
+    runs-on: ubuntu-latest
+    steps:
+      - name: true-or-false
+        run: |
+          if [[ -z "${{ inputs.my-bool }}" ]] || [[ "true" = "${{ inputs.my-bool }}" ]]; then
+            echo "GO GO GO!"
+          else
+            echo "NO NO NO..."
+          fi
