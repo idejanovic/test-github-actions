@@ -3,7 +3,7 @@ name: 'bug1'
 on: [push, pull_request]
 
 concurrency:
-  group: '${{ github.workflow }} @ ${{ contains(fromJson('["pull_request"]'), github.event_name && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}'
+  group: '${{ github.workflow }} @ ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}'
   cancel-in-progress: true
 
 jobs:
