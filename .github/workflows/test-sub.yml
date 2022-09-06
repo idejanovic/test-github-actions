@@ -4,10 +4,10 @@ on:
   workflow_call:
     inputs:
       my-bool:
-        type: boolean
+        type: string
       my-bool2:
-        type: boolean
-        default: true
+        type: string
+        default: "true"
 jobs:
   run:
     name: "TNT"
