@@ -44,7 +44,6 @@ jobs:
           echo ${{ github.event_name }}
           echo ${{ github.event_name == "pull_request" }}
           echo ${{ github.head_ref }}
-          echo ${{ github.event_name == "pull_request" && github.head_ref }}
       - name: sleep
         run: sleep 20
 
