@@ -1,5 +1,13 @@
 name: 'Test Sub'
 
+on:
+  workflow_call:
+    inputs:
+      my-bool:
+        type: boolean
+      my-bool2:
+        type: boolean
+        default: true
 jobs:
   run:
     name: "EKS"
@@ -12,3 +20,5 @@ jobs:
           else
             echo "NO NO NO..."
           fi
+          echo "my-bool:  '${{ inputs.my-bool }}'"
+          echo "my-bool2: '${{ inputs.my-bool2 }}'"
