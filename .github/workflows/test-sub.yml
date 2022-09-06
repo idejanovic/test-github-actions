@@ -14,10 +14,10 @@ on:
   push:
   pull_request:
 
-
-# concurrency:
-#   group: '${{ github.workflow }} @ ${{ github.event_name == "pull_request" && github.head_ref || github.event_name == "push" && github.ref_name || github.head_ref || github.ref }}'
-#   cancel-in-progress: true
+#  || github.event_name == "push" && github.ref_name || github.head_ref  || github.ref 
+concurrency:
+  group: '${{ github.workflow }} @ ${{ contains(fromJson('["push"]'), github.event_name) && github.head_ref}}'
+  cancel-in-progress: true
 
 jobs:
   run:
