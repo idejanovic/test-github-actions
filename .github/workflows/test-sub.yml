@@ -10,7 +10,7 @@ on:
         default: true
 jobs:
   run:
-    name: "EKS"
+    name: "TNT"
     runs-on: ubuntu-latest
     steps:
       - name: true-or-false
