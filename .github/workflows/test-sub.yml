@@ -15,9 +15,9 @@ on:
   pull_request:
 
 #  || github.event_name == "push" && github.ref_name || github.head_ref  || github.ref 
-# concurrency:
-#   group: '${{ github.workflow }} @ ${{ contains(fromJson('["push"]'), github.event_name) && "y" || "n" }}'
-#   cancel-in-progress: true
+concurrency:
+  group: '${{ github.workflow }} @ ${{ contains(fromJson('["pull_request"]'), github.event_name) && github.head_ref || contains(fromJson('["push"]'), github.event_name) && github.ref_name || github.head_ref || github.ref }}'
+  cancel-in-progress: true
 
 jobs:
   run:
