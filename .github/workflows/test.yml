@@ -10,6 +10,6 @@ on:
 jobs:
   call:
     name: "sub"
-    uses: ./github/workflows/test-sub.yml
+    uses: ./.github/workflows/test-sub.yml
     with:
       my-bool: ${{ github.event.inputs.my-boolean}}
